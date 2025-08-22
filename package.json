@@ -1,0 +1,20 @@
+{
+  "name": "task_1-crud-operation",
+  "version": "1.0.0",
+  "description": "this is crud operation task task 1 by sir hannan ",
+  "main": "index.js",
+  "type":"module",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "author": "mujtaba abid",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.17.2",
+    "nodemon": "^3.1.10"
+  }
+}
