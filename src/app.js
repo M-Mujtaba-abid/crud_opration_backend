@@ -1,7 +1,15 @@
 import express from "express"
+import userRoutes from "../src/routes/user.route.js"
+
 
 const app=express()
-app.use(express())
+
+app.use(express.json())
+
+app.use("/user",userRoutes)
+
+
+
 
 app.get("/",(req,res)=>{
     res.send("server is running on 8000 ")
