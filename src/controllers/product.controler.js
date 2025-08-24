@@ -83,4 +83,25 @@ const deleteProduct = asyncHandler(async (req, res) => {
   res.status(200).json(new ApiResponse(200, "product" , product));
 });
 
-export { createProduct, getAllProducts, updateProduct, deleteProduct };
+const categoryFilter=asyncHandler(async(req,res)=>{
+    
+    const {category}= req.query
+    
+    if(!category){
+        throw new ApiError(400," category is required to filter by category")
+    }   
+     
+    const product= await Product.find({ category: { $regex: new RegExp(category, "i") } })
+
+    if(product.length === 0){
+      throw new ApiError(400,`not product found by this ${category} category `)
+    }
+
+    res.status(200).json({
+        success:true,
+        message:`product find by this ${product} category `,
+        product,
+    });
+});
+
+export { createProduct, getAllProducts, updateProduct, deleteProduct,categoryFilter };
