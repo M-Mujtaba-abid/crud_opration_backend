@@ -59,26 +59,24 @@ const updateProduct = asyncHandler(async (req, res) => {
     runValidators: true,
   });
 
-   if (!product) {
+  if (!product) {
     throw new ApiError(404, "Product not found");
   }
 
   return res
     .status(200)
     .json(new ApiResponse(200, "Product updated successfully", product));
-
 });
 
-const deleteProduct= asyncHandler(async(req,res)=>{
+const deleteProduct = asyncHandler(async (req, res) => {
+  const { id } = req.params;
 
+  const product =await Product.findByIdAndDelete(id);
 
-    const {id}= req.params
+  if(!product){
+    throw new ApiError(400,"product not found ")
+  }
+  res.status(200).json(new ApiResponse(200, "product" , product));
+});
 
-    const product=Product.findByIdAndDelete(id)
-
-
-   res.status(200).json(ApiResponse(200,"product"))
-
-})
-
-export { createProduct, getAllProducts ,updateProduct,deleteProduct};
+export { createProduct, getAllProducts, updateProduct, deleteProduct };
