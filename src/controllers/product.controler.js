@@ -47,7 +47,6 @@ const getAllProducts = asyncHandler(async (req, res) => {
     .json(new ApiResponse(200, "get all products successfully", product));
 });
 
-
 const updateProduct = asyncHandler(async (req, res) => {
   const { id } = req.params;
   const updatedDataOFproduct = req.body;
@@ -72,7 +71,6 @@ const updateProduct = asyncHandler(async (req, res) => {
     .status(200)
     .json(new ApiResponse(200, "Product updated successfully", product));
 });
-
 
 const deleteProduct = asyncHandler(async (req, res) => {
   const { id } = req.params;
