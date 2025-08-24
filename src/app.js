@@ -1,5 +1,6 @@
 import express from "express"
 import userRoutes from "../src/routes/user.route.js"
+import productRoutes from "../src/routes/product.route.js"
 
 
 const app=express()
@@ -7,7 +8,7 @@ const app=express()
 app.use(express.json())
 
 app.use("/user",userRoutes)
-
+app.use("/product", productRoutes)
 
 
 
