@@ -47,14 +47,19 @@ const getAllProducts = asyncHandler(async (req, res) => {
     .json(new ApiResponse(200, "get all products successfully", product));
 });
 
+
 const updateProduct = asyncHandler(async (req, res) => {
   const { id } = req.params;
   const updatedDataOFproduct = req.body;
+
+
   if (!id) {
     throw new ApiError(400, "Product ID is required");
   }
 
-  const product = Product.findByIdAndUpdate(_id, updatedDataOFproduct, {
+
+
+  const product =await Product.findByIdAndUpdate(id, updatedDataOFproduct, {
     new: true,
     runValidators: true,
   });
@@ -67,6 +72,7 @@ const updateProduct = asyncHandler(async (req, res) => {
     .status(200)
     .json(new ApiResponse(200, "Product updated successfully", product));
 });
+
 
 const deleteProduct = asyncHandler(async (req, res) => {
   const { id } = req.params;
