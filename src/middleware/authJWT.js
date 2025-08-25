@@ -8,12 +8,15 @@ export const protect = asyncHandler(async (req, res, next) => {
   if (req.cookies.jwt) {
     token = req.cookies.jwt;
 
-    console.log("Token from  cookie ==========:", token);
+    // console.log("Token from  cookie ==========:", token);
     
+
+
     try {
       const decoded = jwt.verify(token, process.env.ACCESS_TOKEN);
       console.log("Decoded user:", decoded);
-      req.user = await User.findById(decoded.id).select("-password"); // user attach kardo
+      // console.log(" ye rhi id",req.user._id)
+      req.user = await User.findById(decoded._id).select("-password"); // user attach kardo
       next();
     } catch (error) {
       throw new ApiError(401, "Not authorized, invalid token");

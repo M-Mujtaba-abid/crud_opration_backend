@@ -1,6 +1,3 @@
-/**
- * Migration: Add "discount" field to products
- */
 
 async function up(db) {
   // ✅ Step 1: Update all documents in 'products' collection
@@ -13,6 +10,7 @@ async function up(db) {
 
   console.log('✅ Discount field added to all products with default value 0');
 }
+
 
 async function down(db) {
   // ✅ Step 2: Undo migration (remove discount field)
