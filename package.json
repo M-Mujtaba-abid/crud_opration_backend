@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "this is crud operation task task 1 by sir hannan ",
   "main": "index.js",
-  "type":"module",
+  "type": "module",
   "scripts": {
     "dev": "nodemon index.js"
   },
@@ -11,10 +11,11 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^6.0.0",
+    "cookie-parser": "^1.4.7",
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.17.2",
+    "mongoose": "^8.18.0",
     "nodemon": "^3.1.10"
   }
 }
