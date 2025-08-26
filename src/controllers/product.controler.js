@@ -58,7 +58,7 @@ const updateProduct = asyncHandler(async (req, res) => {
     throw new ApiError(400, "Product ID is required");
   }
 
-  const product = await Product.findByIdAndUpdate(
+  const product = await Product.findOneAndUpdate(
     { _id: id, userId: req.user._id },
     updatedDataOFproduct,
     {
@@ -79,7 +79,7 @@ const updateProduct = asyncHandler(async (req, res) => {
 const deleteProduct = asyncHandler(async (req, res) => {
   const { id } = req.params;
 
-  const product = await Product.findByIdAndDelete({
+  const product = await Product.findOneAndDelete({
     _id: id,
     userId: req.user._id, // ownership check
   });
@@ -98,6 +98,7 @@ const categoryFilter = asyncHandler(async (req, res) => {
   }
 
   const product = await Product.find({
+    userId: req.user._id, // ownership check
     category: { $regex: new RegExp(category, "i") },
   });
 
